@@ -6,7 +6,7 @@
 package simulador; //Nombre del Paquete de la Clase
 
 /**
- * @author Oscar F. Fonseca Salicetti y Andrés J. Jiménez Leandro
+ * @author Andrés Matta Morales
  **/
 
 public class Maquina { //Nombre e Inicio de la Clase "Máquina"

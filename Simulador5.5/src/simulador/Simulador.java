@@ -8,7 +8,7 @@ package simulador; //Nombre del Paquete de la Clase
 import javax.swing.JOptionPane; //Importe de un Servicio de Java
 
 /**
- * @author Andrés J. Jiménez Leandro y Oscar F. Fonseca Salicetti
+ * @author Andrés Matta Morales
  **/
 
 public class Simulador { //Nombre del Main del Programa
