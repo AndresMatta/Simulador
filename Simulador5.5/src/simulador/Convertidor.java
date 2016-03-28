@@ -68,7 +68,7 @@ public class Convertidor { //Nombre e Inicio de la Clase "Convertidor"
                 this.dias = this.dias + 1; //Entonces valla agregando uno a los días
                 this.horas = this.horas - 24; //Y reste las 24 horas de un día agregado
             } //Fin de la Condición
-        } while (this.horas > 24); //Repita el ciclo mientras horas sean menores a 24, de lo contrario salga del Ciclo
+        } while (this.horas >= 24); //Repita el ciclo mientras horas sean menores a 24, de lo contrario salga del Ciclo
         return ("La Cantidad de Horas Introducidas Equivalen a: " + this.dias + " días."); //Muestra de Resultados
     } //Fin del Método para Convertir Horas
 
@@ -79,7 +79,7 @@ public class Convertidor { //Nombre e Inicio de la Clase "Convertidor"
                 this.semanas = this.semanas + 1; //Entonces valla agregando uno a las semanas
                 this.dias = this.dias - 7; //Y reste los 7 días de una semana agregada
             } //Fin de la Condición
-        } while (this.dias > 7); //Repita el ciclo mientras dias sean menores a 7, de lo contrario salga del Ciclo
+        } while (this.dias >= 7); //Repita el ciclo mientras dias sean menores a 7, de lo contrario salga del Ciclo
         return ("La Cantidad de Días Equivalen a: " + this.semanas + " semanas."); //Muestra de Resultados
     } //Fin del Método para Convertir Días
 
@@ -90,7 +90,7 @@ public class Convertidor { //Nombre e Inicio de la Clase "Convertidor"
                 this.meses = this.meses + 1; //Entonces valla agregando uno a los meses
                 this.semanas = this.semanas - 4; //Y reste las 4 semanas de un mes agregado
             } //Fin de la Condición
-        } while (this.semanas > 4); //Repita el Ciclo mientras semanas sean menores a 4, de lo contrario salga del Ciclo
+        } while (this.semanas >= 4); //Repita el Ciclo mientras semanas sean menores a 4, de lo contrario salga del Ciclo
         return ("La Cantidad de Semanas Equivalen a: " + this.meses + " meses."); //Muestra de Resultados
     } //Fin del Método para Convertir Semanas
 
@@ -101,7 +101,7 @@ public class Convertidor { //Nombre e Inicio de la Clase "Convertidor"
                 this.años = this.años + 1; //Entonces valla agregando uno a los años
                 this.meses = this.meses - 12; //Y reste los 12 meses de un año agregado
             } //Fin de la Condición
-        } while (this.meses > 12); //Repita el Ciclo mientras meses sean menores a 12, de lo contrario salga del Ciclo
+        } while (this.meses >= 12); //Repita el Ciclo mientras meses sean menores a 12, de lo contrario salga del Ciclo
         return ("La Cantidad de Meses Equivalen a: " + this.años + " años."); //Muestra de Resultados
     } //Fin del Método para Convertir Meses    
 } //Fin de la Clase "Convertidor"

@@ -25,6 +25,7 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
     Producto miProducto = new Producto();
     Maquina miMaquina1 = new Maquina();
     Maquina miMaquina2 = new Maquina();
+    Convertidor c1 = new Convertidor();
 
     //Toma y Muestras de los Valores Necesarios para el Proceso:
     
@@ -131,6 +132,11 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
      */
 
     public String simula() { //Inicio del Método que carga la Simulación
+        this.setHoras(c1.getHoras());
+        this.setDias(c1.getDias());
+        this.setSemanas(c1.getSemanas());
+        this.setMeses(c1.getMeses());
+        this.setAños(c1.getAños());
         int tiempoMaximoReparacion1 = 1; //Se encarga de reparar la maquina 1 cuando se cumple su tiempo.
         int tiempoMaximoReparacion2 = 1; //Se encarga de reparar la maquina 2 cuando se cumple su tiempo.
         int cont = 1; //Contador de las horas, cada ciclo representa 1 hora
@@ -154,6 +160,8 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
             } else { //De lo Contrario...
                 miMaquina2.setEstado(true); //Máquina en Estado "true"
             }
+            
+            
             if (miMaquina1.getEstado() == false) {
                 producidos1 = producidos1 + 0;
             }
@@ -189,20 +197,22 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
             
             cont++; //Aumento del Contador
             
-            if ((cont >= 24 || (cont >= this.horasPorDia))) {
+            if ((cont >= 24 || (contDias <= this.diasPorSemana))) {
                 contDias++;
                 cont = 1;
             }
-            if ((contDias >= 7 || (contDias >= this.diasPorSemana))) {
+            
+            if ((contDias >= 7 || (contSemanas <= this.semanasPorMes))) {
                 contSemanas++;
                 contDias = 1;
+                System.out.println("1");
             }
-            if ((contSemanas >= 4 || (contSemanas >= this.semanasPorMes))) {
+            if ((contSemanas >= 4 || (contMeses >= this.mesesPorAño))) {
                 contMeses++;
                 contSemanas = 1;
             }
 
-        } while ((this.horasPorDia <= cont && (this.diasPorSemana <= contDias) && (this.semanasPorMes <= contSemanas) && (this.mesesPorAño <= contMeses))); //Condición del Ciclo
+        } while ((this.horasPorDia <= cont)); //Condición del Ciclo
 
         return ("Los Productos Producidos Por la Máquina "+ miMaquina1.getID()+" fueron "+producidos1+'\n'+" y "+'\n'+"Los Productos Producidos por la Máquina "+miMaquina2.getID()+" fueron "+producidos2); //Retorno de los Resultados Obtenidos en Ambas Máquinas
     }//Fin del Método que despliega los resultados de la Simulación 
