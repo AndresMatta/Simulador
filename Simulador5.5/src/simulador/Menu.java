@@ -41,9 +41,9 @@ public class Menu {
          */
         
         //Solicitud del Nombre del Producto a Crear:
-        miProducto.setNombre(JOptionPane.showInputDialog("Digite el Nombre del Producto que Realizarán las Máquinas: "));
+        miSimulacion.miProducto.setNombre(JOptionPane.showInputDialog("Digite el Nombre del Producto que Realizarán las Máquinas: "));
         //Solicitud del Precio del Producto a Crear:
-        miProducto.setPrecio(Double.parseDouble(JOptionPane.showInputDialog("Digite el Precio de Venta del Producto que se Creará: ¢")));
+        miSimulacion.miProducto.setPrecio(Double.parseDouble(JOptionPane.showInputDialog("Digite el Precio de Venta del Producto que se Creará: ¢")));
        
         /*
          * Menú Para Cambiar Las Opciones de las Máquinas:
@@ -138,7 +138,7 @@ public class Menu {
                             System.exit(0); //Salir del Programa
                             break; //Fin del Caso 7
                         case 8:
-                            JOptionPane.showMessageDialog(null, miSimulacion.simula(), "Resultado Final", JOptionPane.INFORMATION_MESSAGE);
+                            miSimulacion.simula();
                             break;
                         default: //Acción por Defecto si se escoge otro Número NO Provisto en el Menú
                             //Despliegue de Mensajes de Errores:

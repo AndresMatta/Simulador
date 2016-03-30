@@ -5,6 +5,9 @@
 
 package simulador; //Nombre del Paquete de la Clase
 
+import javax.swing.JOptionPane;
+
+
 /**
  * @author Andrés Matta Morales
  **/
@@ -95,24 +98,26 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
      * Se rige mediando ciclos, por el tiempo dado por el usuario...
      */
 
-    public String simula() { //Inicio del Método que carga la Simulación
+    public void simula() { //Inicio del Método que carga la Simulación
         int tiempoMaximoReparacion1 = 1; //Se encarga de reparar la maquina 1 cuando se cumple su tiempo.
         int tiempoMaximoReparacion2 = 1; //Se encarga de reparar la maquina 2 cuando se cumple su tiempo.
+        int horasReparacion1 =0;
+        int horasReparacion2 =0;
         int cont = 1; //Contador de las horas, cada ciclo representa 1 hora.
         double producidos1 = 0; //Valor de las Producciones por máquina. 
         double producidos2 = 0; //Valor de las Producciones por máquina.
+        String resultado1; //Mostrara los ressultados de la máquina nº1.
+        String resultado2; //Mostrara los resultados de la màquina nº2.
         
         do {
             //Generacion de la posible falla:
-            if (miMaquina1.randomFalla() > miMaquina1.getFalla()) {
+            if (miMaquina1.randomFalla() > miMaquina1.getFalla() && miMaquina1.getEstado()!=false) {
                 miMaquina1.setEstado(false);
-                tiempoMaximoReparacion1++;
             } else {
                 miMaquina1.setEstado(true);
             }
-            if (miMaquina2.randomFalla() > miMaquina2.getFalla()) {
+            if (miMaquina2.randomFalla() > miMaquina2.getFalla() && miMaquina2.getEstado()!=false) {
                 miMaquina2.setEstado(false);
-                tiempoMaximoReparacion2++;
             } else { //De lo Contrario...
                 miMaquina2.setEstado(true); //Máquina en Estado "true"
             }
@@ -120,9 +125,13 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
             
             if (miMaquina1.getEstado() == false) {
                 producidos1 = producidos1 + 0;
+                tiempoMaximoReparacion1++;
+                horasReparacion1++;
             }
             if (miMaquina2.getEstado() == false) {
                 producidos2 = producidos2 + 0;
+                tiempoMaximoReparacion2++;
+                horasReparacion2++;
             }
             
             //Reparacion de la Maquina por medio del Tiempo Máximo de Reparacion:
@@ -145,17 +154,43 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
                 producidos2 = producidos2 + miMaquina2.getProduccionHora();
             }
             
-            /*
-             * Incremento de los respectivos contadores...
-             * Funciona de Forma Dinámica con los valores dados por el usuario y la vida real;
-             * devuelve la produccion realizada...
-             */
-            
             cont++; //Aumento del Contador
-
+    
         } while (cont<this.getHoras()); //Condición del Ciclo
-
-        return ("Los Productos Producidos Por la Máquina "+ miMaquina1.getID()+" fueron "+producidos1+'\n'+" y "+'\n'+"Los Productos Producidos por la Máquina "+miMaquina2.getID()+" fueron "+producidos2); //Retorno de los Resultados Obtenidos en Ambas Máquinas
+        
+        //Ganancias brutas de la primera máquina.
+        double ganancia1 = producidos1*miProducto.getPrecio();
+        miMaquina1.setBruto(ganancia1);
+        
+        //Ganancias brutas de la segunda máquina.
+        double ganancia2 = producidos2*miProducto.getPrecio();
+        miMaquina2.setBruto(ganancia2);
+        
+        //Se asignan las ganancias reales.
+        miMaquina1.setReal(ganancia1 - (miMaquina1.getCostoProduccion()*this.getHoras()));
+        miMaquina2.setReal(ganancia2 - (miMaquina2.getCostoProduccion()*this.getHoras()));
+        
+             /*
+             * Se imprimen los resultados...
+             * Funciona de Forma Dinámica con los valores dados por el usuario y la vida real;
+             * Devuelve la produccion realizada, ganancias y cantidad de horas en reparacion...
+             */
+        
+        resultado1 = "Los resultados de la máquina " + miMaquina1.getID() + " son:"+"\n\n"
+                   + "El costo inicial de la máquina fue: "+miMaquina1.getCostoMaquina()+"\n"
+                   + "La cantidad de horas que estuvo en reparación fueron: " + horasReparacion1 + "\n"
+                   + "La cantidad de " + miProducto.getNombre() +  " fue: " + producidos1 + "\n"                 
+                   + "Las ganancias netas son de: " + miMaquina1.getReal() + "\n";
+        
+        resultado2 = "Los resultados de la máquina " + miMaquina2.getID() + " son:"+"\n\n"
+                   + "El costo inicial de la máquina fue: "+miMaquina2.getCostoMaquina()+"\n"
+                   + "La cantidad de horas que estuvo en reparación fueron: " + horasReparacion2 + "\n"
+                   + "La cantidad de " + miProducto.getNombre() +  " fue: " + producidos2 + "\n"                 
+                   + "Las ganancias netas son de: " + miMaquina2.getReal() + "\n";
+        
+        JOptionPane.showMessageDialog(null, resultado1, miMaquina1.getID(), JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, resultado2, miMaquina2.getID(), JOptionPane.INFORMATION_MESSAGE);
+        
     }//Fin del Método que despliega los resultados de la Simulación 
     
 } //Fin de la Clase "Simulación"
