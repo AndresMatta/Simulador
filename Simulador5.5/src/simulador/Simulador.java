@@ -5,7 +5,6 @@
 
 package simulador; //Nombre del Paquete de la Clase
 
-import javax.swing.JOptionPane; //Importe de un Servicio de Java
 
 /**
  * @author Andrés Matta Morales
