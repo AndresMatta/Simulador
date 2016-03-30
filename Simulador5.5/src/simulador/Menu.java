@@ -112,6 +112,7 @@ public class Menu {
                         
                         case 7: //Toma y Despliegue de los Estados de Tiempo a Trabajar
                             miConvertidor.setHoras(Integer.parseInt(JOptionPane.showInputDialog("Digite las Horas de Trabajo: ")));
+                            miSimulacion.setHoras(miConvertidor.getHoras());
                             //NUEVO SISTEMA DE CONVERSIÓN INCLUIDO EN EL MENÚ:SIN INTROMISIÓN AL USUARIO (POR: ANDRÉS J. JIMÉNEZ LEANDRO)
                             
                             //Concatenación de los Resultados de las Conversiones:

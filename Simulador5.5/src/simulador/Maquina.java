@@ -14,7 +14,7 @@ public class Maquina { //Nombre e Inicio de la Clase "Máquina"
     private double costoMaquina; //Declaración del Atributo que da el Valor de la Máquina
     private double costoProduccion; //Declaración del Atributo que da los Costos de Producción por Hora
     private double produccionHora; //Declaración del Atributo que da la Cantidad de Productos que se pueden Hacer por Hora
-    private boolean estado; //Declaración del Atributo que define los Estados de la Máquina: "Funciona" ó "Dañada"
+    private boolean estado = true; //Declaración del Atributo que define los Estados de la Máquina: "Funciona" ó "Dañada"
     private int tiempoReparacionMaximo; //Declaración del Atributo que da el Tiempo de Máximo en ser Reparada Cuándo se Daña
     private double falla; //Declaración del Atributo que da el Número que Sirve como Parámetro para la Falla de la Máquina
     private String id; //Declaración del Atributo que da la Identificación de la Máquina
