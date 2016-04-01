@@ -179,13 +179,13 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
              * Funciona de Forma Dinámica con los valores dados por el usuario y la vida real;
              * Devuelve la produccion realizada, ganancias y cantidad de horas en reparacion...
              */
-        
+        //Resultado de la maquina 1.
         resultado1 = "Los resultados de la máquina " + miMaquina1.getID() + " son:"+"\n\n"
                    + "El costo inicial de la máquina fue: "+miMaquina1.getCostoMaquina()+"\n"
                    + "La cantidad de horas que estuvo en reparación fueron: " + horasReparacion1 + "\n"
                    + "La cantidad de " + miProducto.getNombre() +  " fue: " + producidos1 + "\n"                 
                    + "Las ganancias netas son de: " + miMaquina1.getReal() + "\n";
-        
+        //Resultado de la maquina2.
         resultado2 = "Los resultados de la máquina " + miMaquina2.getID() + " son:"+"\n\n"
                    + "El costo inicial de la máquina fue: "+miMaquina2.getCostoMaquina()+"\n"
                    + "La cantidad de horas que estuvo en reparación fueron: " + horasReparacion2 + "\n"

@@ -21,6 +21,6 @@ public class Simulador { //Nombre del Main del Programa
    Menu m1 = new Menu();
    //Carga el método Interface.
    m1.Interface();
-   }
+   }//Fin del main.
   
 } //Fin del Programa en JaVa
