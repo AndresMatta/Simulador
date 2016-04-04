@@ -101,8 +101,8 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
     public void simula() { //Inicio del Método que carga la Simulación
         int tiempoMaximoReparacion1 = 1; //Se encarga de reparar la maquina 1 cuando se cumple su tiempo.
         int tiempoMaximoReparacion2 = 1; //Se encarga de reparar la maquina 2 cuando se cumple su tiempo.
-        int horasReparacion1 =0;
-        int horasReparacion2 =0;
+        int horasReparacion1 =0;//Cantidad de horas que tardo reparandose la maquina 1.
+        int horasReparacion2 =0;//Camtidad de horas que tardo reparandose la maquina 2.
         int cont = 1; //Contador de las horas, cada ciclo representa 1 hora.
         double producidos1 = 0; //Valor de las Producciones por máquina. 
         double producidos2 = 0; //Valor de las Producciones por máquina.
@@ -113,11 +113,13 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
             //Generacion de la posible falla:
             if (miMaquina1.randomFalla() > miMaquina1.getFalla() && miMaquina1.getEstado()!=false) {
                 miMaquina1.setEstado(false);
+                JOptionPane.showMessageDialog(null, "La maquina " + miMaquina1.getID() + " ha sufrido una falla en la hora nº " + cont);
             } else {
                 miMaquina1.setEstado(true);
             }
             if (miMaquina2.randomFalla() > miMaquina2.getFalla() && miMaquina2.getEstado()!=false) {
                 miMaquina2.setEstado(false);
+                JOptionPane.showMessageDialog(null, "La maquina " + miMaquina2.getID() + " ha sufrido una falla en la hora nº " + cont);
             } else { //De lo Contrario...
                 miMaquina2.setEstado(true); //Máquina en Estado "true"
             }
@@ -136,11 +138,13 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
             
             //Reparacion de la Maquina por medio del Tiempo Máximo de Reparacion:
             
-            if (tiempoMaximoReparacion1 >= miMaquina1.getTiempoReparacion()) {
+            if (tiempoMaximoReparacion1 >= miMaquina1.getTiempoReparacion()&&miMaquina1.getEstado()==false) {
                 miMaquina1.setEstado(true);
+               JOptionPane.showMessageDialog(null, "La maquina " + miMaquina1.getID() + " ha sido reparada en la hora nº " + cont);
             }
-            if (tiempoMaximoReparacion2 >= miMaquina2.getTiempoReparacion()) {
+            if (tiempoMaximoReparacion2 >= miMaquina2.getTiempoReparacion()&&miMaquina2.getEstado()==false) {
                 miMaquina2.setEstado(true);
+               JOptionPane.showMessageDialog(null, "La maquina " + miMaquina2.getID() + " ha sido reparada en la hora nº " + cont);
             }
             
             /*
@@ -188,8 +192,15 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
                    + "La cantidad de " + miProducto.getNombre() +  " fue: " + producidos2 + "\n"                 
                    + "Las ganancias netas son de: " + miMaquina2.getReal() + "\n";
         
+        //Se imprimen los resultados
         JOptionPane.showMessageDialog(null, resultado1, miMaquina1.getID(), JOptionPane.INFORMATION_MESSAGE);
         JOptionPane.showMessageDialog(null, resultado2, miMaquina2.getID(), JOptionPane.INFORMATION_MESSAGE);
+        //Se muestra la recomendacion..
+        if(miMaquina1.getReal()-miMaquina1.getCostoMaquina()>miMaquina2.getReal()-miMaquina2.getCostoMaquina()){
+            JOptionPane.showMessageDialog(null, "Se recomienda adquirir la maquina " + miMaquina1.getID());
+        }else{//Inicio del else
+            JOptionPane.showMessageDialog(null, "Se recomienda adquirir la maquina " + miMaquina2.getID());
+        }//Fin del condicional
         
     }//Fin del Método que despliega los resultados de la Simulación 
     
