@@ -111,18 +111,14 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
         
         do {
             //Generacion de la posible falla:
-            if (miMaquina1.randomFalla() > miMaquina1.getFalla() && miMaquina1.getEstado()!=false) {
+            if (miMaquina1.randomFalla() < miMaquina1.getFalla() && miMaquina1.getEstado()!=false) {
                 miMaquina1.setEstado(false);
-                JOptionPane.showMessageDialog(null, "La maquina " + miMaquina1.getID() + " ha sufrido una falla en la hora nº " + cont);
-            } else {
-                miMaquina1.setEstado(true);
-            }
-            if (miMaquina2.randomFalla() > miMaquina2.getFalla() && miMaquina2.getEstado()!=false) {
+                
+            }//Fin del if
+            if (miMaquina2.randomFalla() < miMaquina2.getFalla() && miMaquina2.getEstado()!=false) {
                 miMaquina2.setEstado(false);
-                JOptionPane.showMessageDialog(null, "La maquina " + miMaquina2.getID() + " ha sufrido una falla en la hora nº " + cont);
-            } else { //De lo Contrario...
-                miMaquina2.setEstado(true); //Máquina en Estado "true"
-            }
+                
+            }//Fin del if
             
             
             if (miMaquina1.getEstado() == false) {
@@ -140,12 +136,12 @@ public class Simulacion { //Nombre e Inicio de la Clase "Simulación"
             
             if (tiempoMaximoReparacion1 >= miMaquina1.getTiempoReparacion()&&miMaquina1.getEstado()==false) {
                 miMaquina1.setEstado(true);
-               JOptionPane.showMessageDialog(null, "La maquina " + miMaquina1.getID() + " ha sido reparada en la hora nº " + cont);
-            }
+               
+            }//Fin del if
             if (tiempoMaximoReparacion2 >= miMaquina2.getTiempoReparacion()&&miMaquina2.getEstado()==false) {
                 miMaquina2.setEstado(true);
-               JOptionPane.showMessageDialog(null, "La maquina " + miMaquina2.getID() + " ha sido reparada en la hora nº " + cont);
-            }
+               
+            }//Fin del if
             
             /*
              *Aquí se Genera la Producción de los Productos

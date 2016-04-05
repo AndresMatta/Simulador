@@ -41,9 +41,9 @@ public class Menu {
          */
         
         //Solicitud del Nombre del Producto a Crear:
-        miSimulacion.miProducto.setNombre(JOptionPane.showInputDialog("Digite el Nombre del Producto que Realizarán las Máquinas: "));
+        miSimulacion.miProducto.setNombre(JOptionPane.showInputDialog("Digite el nombre del producto que realizarán las máquinas: "));
         //Solicitud del Precio del Producto a Crear:
-        miSimulacion.miProducto.setPrecio(Double.parseDouble(JOptionPane.showInputDialog("Digite el Precio de Venta del Producto que se Creará: ¢")));
+        miSimulacion.miProducto.setPrecio(Double.parseDouble(JOptionPane.showInputDialog("Digite el precio de venta del producto que se fabricará: ¢")));
        
         /*
          * Menú Para Cambiar Las Opciones de las Máquinas:
@@ -53,14 +53,14 @@ public class Menu {
           //Segundo Intento de Menú: (Por Andrés J. Jiménez Leandro)
  
             //Concatenación y Orden del Menú de Opciones:
-            tab1 += "SELECCIONE UNA OPCIÓN:\n\n"
-                    + "\n1) Para Agregar Las ID de las Máquinas...\n"
-                    + "\n2) Para Agregar Los Costos de Compra...\n"
-                    + "\n3) Para Agregar Los Costos de Produccion...\n"
-                    + "\n4) Para Agregar La Capacidad Por Hora de Producción de las Máquinas...\n"
-                    + "\n5) Para Agregar El Número Para la Falla...\n"
-                    + "\n6) Para Agregar El Tiempo de Garantía (Tiempo Máximo en que se va a Reparar una Falla)...\n"
-                    + "\n7) Para Definir Las Horas de Trabajo (Uso del Convertidor)...\n"
+            tab1 = "SELECCIONE UNA OPCIÓN:\n\n"
+                    + "\n1) Para agregar las ID de las máquinas...\n"
+                    + "\n2) Para agregar los costos de compra...\n"
+                    + "\n3) Para agregar los costos de produccion...\n"
+                    + "\n4) Para agregar la capacidad por hora de producción de las máquinas...\n"
+                    + "\n5) Para agregar el número para la falla...\n"
+                    + "\n6) Para agregar el tiempo de garantía (Tiempo máximo en que se va a reparar una falla)...\n"
+                    + "\n7) Para definir las horas de trabajo (Uso del convertidor)...\n"
                     + "\n8) Iniciar simulación..\n"
                     + "\n9) SALIDA...\n";
             
@@ -116,11 +116,11 @@ public class Menu {
                             //NUEVO SISTEMA DE CONVERSIÓN INCLUIDO EN EL MENÚ:SIN INTROMISIÓN AL USUARIO (POR: ANDRÉS J. JIMÉNEZ LEANDRO)
                             
                             //Concatenación de los Resultados de las Conversiones:
-                            tab2 += "Las Horas a Trabajar Son:\n"+miConvertidor.getHoras()+"\n"
-                                 + "Los Días a Trabajar Son:\n"+miConvertidor.converHoras()+"\n"
-                                 + "Las Semanas a Trabajar Son:\n"+miConvertidor.converDias()+"\n"
-                                 + "Los Meses a Trabajar Son:\n"+miConvertidor.converSemanas()+"\n"
-                                 + "Los Años a Trabajar Son:\n"+miConvertidor.converMeses()+"\n";
+                            tab2 = "Horas que trabajaran las maquinas: " + miConvertidor.getHoras()+"\n"
+                                 +  miConvertidor.converHoras()+"\n"
+                                 +  miConvertidor.converDias()+"\n"
+                                 +  miConvertidor.converSemanas()+"\n"
+                                 +  miConvertidor.converMeses()+"\n";
                             
                             /* ENUNCIADOS SEPARADOS ANTERIORES (NO CONCATENADOS):
                             JOptionPane.showMessageDialog(null, "Las Horas a Trabajar Son:\n"+miConvertidor.getHoras());
